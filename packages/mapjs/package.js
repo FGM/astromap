@@ -18,11 +18,10 @@ Package.onUse(function(api) {
 
   api.versionsFrom('1.2.0.2');
   api.use('jquery', where);
-  api.addFiles(['client/mapjs.js'], where, {bare: true});
+  api.use('chriswessels:hammer');
+  // api.addFiles(['client/mapjs.js'], where, {bare: true});
 
-  if (api.export) {
-    api.export('MAPJS');
-  }
+  api.export('MAPJS');
 });
 
 Package.onTest(function(api) {

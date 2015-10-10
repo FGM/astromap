@@ -1,9 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var MAPJS = MAPJS || {};
+MAPJS = MAPJS || {};
 
 /*global console*/
 /*jshint unused:false */
-var observable = function (base) {
+observable = function (base) {
 	'use strict';
 	var listeners = [], x;
 	base.addEventListener = function (types, listener, priority) {
@@ -1448,7 +1448,7 @@ MAPJS.MemoryClipboard = function () {
 					target.trigger($.Event('mm:cancel-dragging', {gesture: e.gesture}));
 				}
 			};
-		Hammer(this, {'drag_min_distance': 2});
+		Hammer(this[0], {'drag_min_distance': 2});
 		return this.on('mm:start-dragging', function (event) {
 			if (!currentDragObject) {
 				currentDragObject = $(event.relatedTarget);
@@ -3421,10 +3421,10 @@ jQuery.fn.updateNodeContent = function (nodeContent, resourceTranslator) {
 		updateText = function (title) {
 			var text = MAPJS.URLHelper.stripLink(title) ||
 					(title.length < MAX_URL_LENGTH ? title : (title.substring(0, MAX_URL_LENGTH) + '...')),
-					nodeTextPadding = MAPJS.DOMRender.nodeTextPadding || 11,
-					element = textSpan(),
-					domElement = element[0],
-					height;
+					nodeTextPadding = MAPJS.DOMRender.nodeTextPadding || 11;
+			var	element = textSpan();
+			var	domElement = element[0];
+			var	height;
 
 			element.text(text.trim());
 			self.data('title', title);
