@@ -1,0 +1,38 @@
+<template name="toolbar">
+  <input type="button" class="resetView" value="0"/>
+  <input type="button" class="scaleUp" value="+"/>
+  <input type="button" class="scaleDown" value="-"/>
+  <input type="button" class="addSubIdea" value="add"/>
+  <input type="button" class="editNode" value="edit"/>
+  <input type="button" class="removeSubIdea" value="delete"/>
+  <input type="button" class="insertIntermediate" value="insert parent"/>
+  <input type="button" class="toggleCollapse" value="exp/col"/>
+  <input type="button" onclick="mapModel.setInputEnabled(false)" value="disable"/>
+  <input type="button" onclick="mapModel.setInputEnabled(true)" value="enable"/>
+  <input type="button" class="undo" value="undo"/>
+  <input type="button" class="redo" value="redo"/>
+  <input type="button" data-mm-action="export-image" value="Export To Image"/>
+  <input type="button" class="cut" value="cut"/>
+  <input type="button" class="copy" value="copy"/>
+  <input type="button" class="paste" value="paste"/>
+  <input type="button" class="openAttachment" value="open attachment"/>
+  <input type="button" class="toggleAddLinkMode" value="add link"/>
+
+  Background: <input type="text" class='updateStyle' data-mm-target-property='background'/>
+  Frames: <span id="framerate"></span>
+  Cycle: <span id="cyclerate"></span>
+
+  <div id="linkEditWidget">
+    <input class="delete" type="button" value="Delete"/>
+    <select class="color">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+    </select>
+    <select class="lineStyle">
+      <option value="solid">Solid</option>
+      <option value="dashed">Dashed</option>
+    </select>
+    <button class="arrow">Arrow</button>
+  </div>
+
+</template>

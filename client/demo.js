@@ -21,56 +21,9 @@ var initDemoFunctions = function () {
   };
 };
 
-
-var observer = function () {
-  var events = [
-    'activatedNodesChanged',
-    'activedNodesChanged',
-    'addLinkModeToggled',
-    'attachmentOpened',
-    'connectorCreated',
-    'connectorRemoved',
-    'contextMenuRequested',
-    'inputEnabledChanged',
-    'layoutChangeComplete',
-    'layoutChangeStarting',
-    'linkAttrChanged',
-    'linkCreated',
-    'linkRemoved',
-    'linkSelected',
-    'mapMoveRequested',
-    'mapScaleChanged',
-    'mapViewResetRequested',
-    'nodeAttrChanged',
-    'nodeCreated',
-    'nodeEditRequested',
-    'nodeFocusRequested',
-    'nodeIconEditRequested',
-    'nodeLabelChanged',
-    'nodeMoved',
-    'nodeRemoved',
-    'nodeSelectionChanged',
-    'nodeTitleChanged'
-  ];
-
-  /**
-   *
-   * @param e
-   * @param mixed params
-   *   - node id: nodeSelectionChanged,
-   *   - [node ids]: activatedNodesChanged
-   *   - -1: layoutChangeStarting
-   *   - { from: nid1, to: nid2 }: connectorRemoved
-   *   - undefined: layoutChangeComplete
-   */
-  var observer = function (eventName, params) {
-    console.log(eventName, "on: ", params);
-  };
-
-  events.forEach(function (eventname) {
-    mapModel.addEventListener(eventname, function (id) { observer(eventname, id); });
-  });
-
+var forceHeightHack = function () {
+  // console.log('FHH');
+  jQuery('[data-mapjs-role=stage]').css('min-height', 600);
 };
 
 var modelCreator = function () {
@@ -117,6 +70,8 @@ var modelCreator = function () {
   });
 
   observer();
+  setTimeout(forceHeightHack, 100);
+  setInterval(forceHeightHack, 1000);
 };
 
 Meteor.startup(function () {
