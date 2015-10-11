@@ -40,12 +40,18 @@ observer = function () {
    *   - { from: nid1, to: nid2 }: connectorRemoved
    *   - undefined: layoutChangeComplete
    */
-  var observer = function (eventName, params) {
+  observerCb = function (eventName, params) {
     console.log(eventName, "on: ", params);
+    var doc = {
+      name: eventName,
+      args: params,
+      created: new Date()
+    };
+    MapEvents.insert(doc);
   };
 
   events.forEach(function (eventname) {
-    mapModel.addEventListener(eventname, function (id) { observer(eventname, id); });
+    mapModel.addEventListener(eventname, function (id) { observerCb(eventname, id); });
   });
 
 };
